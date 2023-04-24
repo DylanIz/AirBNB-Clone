@@ -1,6 +1,10 @@
+'use client';
+
 import { Content } from "next/font/google";
 import Container from "../Container";
 import Logo from "./Logo";
+import Search from "../navbar/Search";
+import UserMenu from "./UserMenu";
 
 const Navbar = () => {
     return ( 
@@ -23,6 +27,8 @@ const Navbar = () => {
                     "
                     >
                         <Logo />
+                        <Search />
+                        <UserMenu />
                     </div>
                 </Container>
             </div>
