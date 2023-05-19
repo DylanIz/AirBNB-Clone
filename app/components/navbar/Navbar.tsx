@@ -5,6 +5,7 @@ import Container from "../Container";
 import Logo from "./Logo";
 import Search from "../navbar/Search";
 import UserMenu from "./UserMenu";
+import 'tailwindcss/tailwind.css';
 
 const Navbar = () => {
     return ( 
