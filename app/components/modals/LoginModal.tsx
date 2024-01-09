@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react';
 import axios from 'axios';
 import { AiFillGithub } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import { useCallback, useState } from 'react';
+import { use, useCallback, useState } from 'react';
 import {
     FieldValues,
     SubmitHandler,
@@ -13,6 +13,7 @@ import {
 
 import useLoginModal from '@/app/hooks/useLoginModal';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+
 import Modal from './Modal';
 import Heading from '../Heading';
 import Input from '../Inputs/Input';
@@ -22,8 +23,10 @@ import { useRouter } from 'next/navigation';
 
 const LoginModal = () => {
     const router = useRouter();
+
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
+
     const [isLoading, setIsLoading] = useState(false);
 
     const{
@@ -58,9 +61,13 @@ const LoginModal = () => {
             if (callback?.error) {
                 toast.error(callback.error);
             }
-        })
-            
+        })       
     }
+
+    const toggle = useCallback(() =>{
+        loginModal.onClose();
+        registerModal.onOpen();
+    }, [loginModal, registerModal]);
 
     const bodyContent = (
         <div className='flex flex-col gap-4'>
@@ -115,10 +122,10 @@ const LoginModal = () => {
                 <div className="
                 justify-center flex flex-row items-center gap-2">
                    <div>
-                    Already have an account?
+                    First time using Airbnb?
                     </div> 
                     <div
-                        onClick={loginModal.onClose}
+                        onClick={toggle}
                         className="
                             text-neutral-800
                             cursor-pointer
@@ -126,7 +133,7 @@ const LoginModal = () => {
 
                         "
                     >
-                    Log in
+                    Create an account
                     </div> 
                 </div>
             </div>
