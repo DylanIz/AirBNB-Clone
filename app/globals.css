@@ -4,6 +4,13 @@
 
 html,
 body,
-    :root{
-        height: 100%
-    }
+:root {
+    height: 100%
+}
+
+.leaflet-bottom,
+.leafet-contol,
+.leaflet-pane,
+.leaflet-top {
+    z-index: 0 !important;
+}
